@@ -6,6 +6,7 @@ class TasksController < ApplicationController
 
   def create
     @task = task_group.tasks.new(params[:task])
+    puts params[:task].to_s
     if @task.save
       redirect_to task_group_path(task_group)
     else
@@ -14,7 +15,6 @@ class TasksController < ApplicationController
   end
 
   def show
-    puts params
    @task_grp =TaskGroup.find(params[:task_group_id])
    @task = @task_grp.tasks.find(params[:id])
    @task.change_status

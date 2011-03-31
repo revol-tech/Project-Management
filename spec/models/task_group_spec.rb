@@ -8,6 +8,7 @@ describe TaskGroup do
 
   it { should have_many :tasks }
   it { should belong_to :project }
+  it { should have_many(:people).through(:assignments) }
 
   it { should validate_presence_of :title }
   it { should validate_presence_of :objective }

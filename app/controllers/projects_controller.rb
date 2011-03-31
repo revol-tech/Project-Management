@@ -2,16 +2,16 @@ class ProjectsController < ApplicationController
 
   before_filter :authenticate_person!
   def index
-    @projects = Project.all
+    @projects = current_person.projects
   end
 
   def new
-    @project = Project.new
+    @project = current_person.projects.build
     @message = "New Project"
   end
 
   def create
-    @project = Project.new(params[:project])
+    @project = current_person.projects.new(params[:project])
     if @project.save
       flash[:notice] = "Project Successfully Created"
       redirect_to projects_path
@@ -22,30 +22,30 @@ class ProjectsController < ApplicationController
   end
 
   def update
-    @project = Project.find(params[:id])
+    @project = current_person.projects.find(params[:id])
     if @project.update_attributes(params[:project])
       redirect_to project_path(@project)
     else
-      @message = "#{@project.title}"
+      @message = "Edit#{@project.title}"
       render 'new'
     end
   end
 
   def edit
-    @project = Project.find(params[:id])
-    @message = "#{@project.title}"
+    @project = current_person.projects.find(params[:id])
+    @message = "Edit#{@project.title}"
     render 'new'
   end
 
   def destroy
-    project = Project.find(params[:id])
+    project = current_person.projects.find(params[:id])
     project.destroy
     flash[:notice] = "Project Scrapped"
     redirect_to projects_path
   end
 
   def show
-    @project = Project.find(params[:id])
+    @project = current_person.projects.find(params[:id])
   end
 
 end

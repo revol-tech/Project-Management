@@ -17,12 +17,6 @@ Given /^I sleep for (\d+) seconds$/ do |arg1|
   sleep(10)
 end
 
-When /^I select "([^"]*)" as the "([^"]*)"$/ do |date, selector|
-    date = Date.parse(date)
-    select(date.year.to_s, :from => "#{selector}(1i)")
-    select(date.strftime("%B"), :from => "#{selector}(2i)")
-    select(date.day.to_s, :from => "#{selector}(3i)")
-end
 
 Given /^I select "([^"]*)" as "([^"]*)"$/ do |selector, value|
     select(value.to_s, :from => "#{selector}")
