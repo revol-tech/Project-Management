@@ -3,7 +3,7 @@
       <%= f.input :title %>
       <%= f.input :deadline %>
       <%= f.input :objective %>
-      <%= f.input :person, :as => :select, :collection => Person.all.map{|person| [person.email, person.id] }%>
+      <%= f.input :person, :as => :select, :collection => Person.all.map{|person| [person.name, person.id] }%>
     <% end %>
     <%=f.buttons%>
 <%end%>
