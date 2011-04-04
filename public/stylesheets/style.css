@@ -19,9 +19,13 @@ body {
 }
 
 .edit_links {
-  display:block;
+  display: block;
   float: right;
 }
 .green {
   color: green;
+}
+
+.red {
+  color: red;
 }

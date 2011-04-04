@@ -20,11 +20,21 @@ module ProjectsHelper
     end
 
     def deadline_class(deadline)
-      return 'green'
+      time_rem = deadline.to_date - Time.now.to_date
+      if time_rem.truncate < 0
+        return 'red'
+      else
+        return 'green'
+      end
     end
 
     def display_formatted_deadline(deadline)
       time_rem = deadline.to_date - Time.now.to_date
-      return "#{time_rem.truncate} Days Remaining"
+      if time_rem.truncate < 0
+        return "#{time_rem.truncate.abs} Days Past Deadline"
+      else
+        return "#{time_rem.truncate} Days Remaining"
+      end
+
     end
 end

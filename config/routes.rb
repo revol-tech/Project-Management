@@ -7,8 +7,13 @@ PMS::Application.routes.draw do
   end
 
   resources :task_groups, :only => [:show] do
-    resources :tasks
+    resources :tasks, :except => [:show, :index]
   end
+
+  resources :tasks, :only => [:index] do
+    get 'toggle_complete'
+  end
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

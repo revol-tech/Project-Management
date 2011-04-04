@@ -24,7 +24,7 @@ class ProjectsController < ApplicationController
   def update
     @project = current_person.projects.find(params[:id])
     if @project.update_attributes(params[:project])
-      redirect_to project_path(@project)
+      redirect_to projects_path
     else
       @message = "Edit#{@project.title}"
       render 'new'

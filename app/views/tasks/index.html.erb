@@ -1,0 +1,9 @@
+<h1>Tasks assigned to <%= current_person.name%></h1>
+<div id ='tasks_list'>
+<% @tasks.each do |task|%>
+  <%= display_task(task) %>
+<%end%>
+</div>
+<%=link_to("<--back",:root)%>
+
+

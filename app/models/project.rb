@@ -1,5 +1,5 @@
 class Project < ActiveRecord::Base
-  has_many :task_groups
+  has_many :task_groups, :dependent => :destroy
   has_many :tasks, :through => :task_groups
   belongs_to :person
 

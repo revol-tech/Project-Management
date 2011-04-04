@@ -12,7 +12,4 @@ $(function(){
        collapsible: true,
        navigation: true
      });
-  // $('.progressbar').progressbar({
-  //    value: $(this).attr('value')
-  //  });
 })
