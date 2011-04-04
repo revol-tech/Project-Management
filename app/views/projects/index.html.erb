@@ -1,8 +1,22 @@
 <h1>Projects index</h1>
 <%=link_to "Create new Project",new_project_path%>
-<% @projects.each do |project| %>
-  <%= project_display(project) %>
-  <%= link_to "Show", project_path(project) %>
-  <%= link_to "Edit", edit_project_path(project) %>
-  <%= link_to "Delete", project_path(project), :method => :delete, :confirm => "Are you absolutely sure?" %>
-<% end %>
+<div id = "projects_list" >
+  <% @projects.each do |project| %>
+  <h3><a href="#"><%= project.title %></a></h3>
+  <div>
+    <div class ="edit_links">
+      <%= link_to "Edit", edit_project_path(project) %>
+      <%= link_to "Delete", project_path(project), :method => :delete, :confirm => "Are you absolutely sure?" %>
+    </div>
+    <%= project_display(project) %>
+
+    <h4>Task Groups:</h4>
+    <%=link_to("Add a task group",new_project_task_group_path(project))%>
+    <ul>
+      <% project.task_groups.each do |task_group| %>
+      <li><%= link_to(task_group.title,task_group_path(task_group)) %></li>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>
+</div>

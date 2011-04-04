@@ -10,7 +10,7 @@ class TaskGroupsController < ApplicationController
     @project = Project.find_by_id(params[:project_id])
     @task_group =  @project.task_groups.new(params[:task_group])
     if @task_group.save
-      redirect_to project_path(@project)
+      redirect_to projects_path
     else
       render 'new'
     end
@@ -20,7 +20,7 @@ class TaskGroupsController < ApplicationController
     @project = Project.find_by_id(params[:project_id])
     @task_group = TaskGroup.find(params[:id])
     if @task_group.update_attributes(params[:task_group])
-      redirect_to(project_path(@project))
+      redirect_to projects_path
     else
       render 'new'
     end
@@ -35,7 +35,7 @@ class TaskGroupsController < ApplicationController
   def destroy
     task_group = TaskGroup.find(params[:id])
     task_group.destroy
-    redirect_to(project_path(task_group.project))
+    redirect_to projects_path
   end
 
   def show

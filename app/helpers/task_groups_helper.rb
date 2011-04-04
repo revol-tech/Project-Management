@@ -3,12 +3,10 @@ module TaskGroupsHelper
    def display_task_group(task_group)
       content_tag :div do
          [
-          '<h3>', task_group.title,'</h3>',
-          '<div>', task_group.objective, '</div>',
-          '<div>', task_group.deadline,  '</div>',
-          link_to("Show",task_group_path(task_group)),
-          link_to("edit",edit_project_task_group_path(task_group.project, task_group)),
-          link_to("delete",project_task_group_path(task_group.project, task_group),:method => :delete )
+          "<div class = 'edit_links'>",link_to("edit",edit_project_task_group_path(task_group.project, task_group)),
+          link_to("delete",project_task_group_path(task_group.project, task_group),:method => :delete,:confirm => "Are you Sure to delete this task group?" ),"</div>",
+          "<h2>#{task_group.project.title} --> #{task_group.title}</h2>",
+          '<div>Objective: ', task_group.objective, '</div>',
           ].join(' ').html_safe
         end
     end

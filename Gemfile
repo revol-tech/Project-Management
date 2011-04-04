@@ -11,6 +11,7 @@ gem 'irbtools'
 gem 'formtastic'
 gem 'devise'
 gem 'validates_timeliness', '~> 3.0.2'
+gem 'jquery-rails'
 
 group :development, :test do
   gem 'rspec-rails'

@@ -1,14 +1,8 @@
 <%= display_task_group(@task_group) %>
 <%=link_to"Add a new Task",new_task_group_task_path(@task_group) %>
-<%= @task_group.people %>
-<ul>
+<div id ='tasks_list'>
   <% @task_group.tasks.each do |task| %>
-    <li><%= display_task(task) %>
-    <%= semantic_form_for([@task_group,task]) do |f| %>
-      <%= f.inputs :comment, :complete %>
-      <%= f.buttons %>
-    <% end %>
-    </li>
+      <%= display_task(task) %>
   <% end %>
-</ul>
-<%=link_to"<--Back",project_path(@task_group.project)%>
+</div>
+<%=link_to"<--Back",projects_path %>

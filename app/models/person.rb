@@ -8,6 +8,6 @@ class Person < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me, :name
 
   has_many :projects
-  has_many :task_groups, :through => :tasks
+  has_many :task_groups, :through => :projects
   has_many :tasks
 end
